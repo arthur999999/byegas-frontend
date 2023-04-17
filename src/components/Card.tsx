@@ -3,6 +3,7 @@ import { Key, useState } from "react"
 import style from "../styles/Ranking.module.css"
 import { FaRegStar, FaStar } from "react-icons/fa"
 import { CallPopModal } from "@/utils/CallPopModal"
+import { useRouter } from "next/router"
 
 export default function Card({m, numRank}:{m: { 
     name: string,
@@ -16,6 +17,11 @@ export default function Card({m, numRank}:{m: {
     }, numRank: number }){
 
     const [favorite, setFavorite] = useState(m.favorite)
+    const router = useRouter()
+
+    function selectChain(id: number){
+        router.push(`/chain/${id}`)
+    }
 
     async function favChain(id: number){
         if(!favorite){
@@ -40,8 +46,8 @@ export default function Card({m, numRank}:{m: {
     return(
         <>
         <div  className={style.card}>
-                    <span>{numRank + 1} <img src={`/images/${m.image}`} alt="chain logo" /></span>
-                    <span>{m.name}</span>
+                    <span onClick={()=> selectChain(m.id)}>{numRank + 1} <img src={`/images/${m.image}`} alt="chain logo" /></span>
+                    <span onClick={()=> selectChain(m.id)}>{m.name}</span>
                     <span onClick={()=> favChain(m.id)}>{favorite? <FaStar/> : <FaRegStar/>}</span>
                     <span>{(m.dataStructured.usd * 10000).toFixed(0)} /10K USD</span>
                 </div>

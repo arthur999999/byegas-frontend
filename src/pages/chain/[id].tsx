@@ -1,12 +1,99 @@
+import CardSpecific from "@/components/CardSpecific"
+import FavoriteCard from "@/components/FavoriteCard"
+import TopBar from "@/components/TopBar"
+import axios from "axios"
 import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
+import style from "../../styles/Home.module.css"
 
 export default function Chain() {
-
+    const dataObject: {
+        name: string,
+        dataStructured: {
+          Standart: {
+            gwei: number,
+            usd: number
+          },
+          Fast: {
+            gwei: number,
+            usd: number
+          },
+          Rapid: {
+            gwei: number,
+            usd: number
+          }
+        },
+        favorite: boolean,
+        image: string,
+        id: number,
+        comments: [],
+        alarm: []
+      }  = {
+    name: "Loading...",
+    dataStructured: {
+      Standart: {
+        gwei: 0,
+        usd: 0
+      },
+      Fast: {
+        gwei: 0,
+        usd: 0
+      },
+      Rapid: {
+        gwei: 0,
+        usd: 0
+      }
+    },
+    favorite: false,
+    image: "Loading",
+    id: 0,
+    comments: [],
+    alarm: []
+  } 
+    const [data, setData] = useState(dataObject)
+    const [secondTime, setSecondTime] = useState(true)
     const router = useRouter()
-    const id = router.query.id
+    
+
+    useEffect(()=> {
+        const id = router.query.id
+        const respose = axios.get(`${process.env.NEXT_PUBLIC_API_URL}/chains/listone/${id}`,{
+            timeout: 6000,
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
+          } )
+         respose.then((data)=>{
+            console.log(data.data)
+            if(!data){
+                return
+            }
+            setData(data.data)
+         }).catch((error)=>{
+            console.log(error)
+         })
+         if(!secondTime){
+            setTimeout(()=> {
+                setSecondTime(true)
+            }, 20000)
+         }else{
+            setTimeout(()=> {
+                setSecondTime(false)
+            }, 20000)
+         }
+         
+    }, [secondTime])
     return(
         <>
-            chain{id}
+            <div className={style.home}>
+            <TopBar/>
+            <div className={style.box}>
+                <CardSpecific data={data}/>
+                <div>
+                    <FavoriteCard data={data} />
+                </div>
+            </div>
+          </div>
         </>
     )
 }

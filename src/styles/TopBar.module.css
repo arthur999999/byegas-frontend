@@ -1,13 +1,14 @@
 .topbar{ 
     display: flex;
     justify-content: space-between;
-    background-color: white;
     width: 100vw;
     height: 50px;
     padding-left: 30px;
     padding-right: 30px;
     align-items: center;
     font-weight: 500;
+    background: linear-gradient(180deg, #FFFFFF 61.98%, #D6D3D3 94.27%);
+    box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.25);
 }
 
 .topbar p {

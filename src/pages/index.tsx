@@ -36,7 +36,7 @@ export default function Login({}) {
     }
     localStorage.setItem("authToken", result.token)
     localStorage.setItem("userName", result.name)
-    if(result.image){
+    if(result.image != undefined){
       localStorage.setItem("userImage", result.image)
     }
     router.push("/home")

@@ -25,3 +25,10 @@
     margin-bottom: 40px;
 }
 
+.box{
+    display: flex;
+    margin-top: 50px;
+    width: 900px;
+    justify-content: space-between;
+}
+
