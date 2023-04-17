@@ -1,3 +1,4 @@
+import Ranking from "@/components/Ranking";
 import TopBar from "@/components/TopBar";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -18,7 +19,11 @@ export default function Home(){
         <>
           <div className={style.home}>
             <TopBar/>
-            <h2>Ranking</h2>
+            <div className={style.ranking}>
+              <h2>Ranking 🔥</h2>
+              <Ranking/>
+            </div>
+            
           </div>
             
         </>
