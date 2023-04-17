@@ -1,0 +1,92 @@
+.topbar{ 
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    width: 100vw;
+    height: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    align-items: center;
+    font-weight: 500;
+}
+
+.topbar p {
+    cursor: pointer;
+}
+
+.icon{
+    font-size: 20px;
+    color: rgb(28, 219, 245);
+}
+
+.image{
+    object-fit: cover;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.modal{
+    background: rgba(0, 0, 0, 0.418);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal div{
+    background: rgb(1, 8, 24);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 150px;
+    border-radius: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 500;
+    color: white;
+}
+
+.modal div button{
+    width: 90px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    background-color: #2073C0;
+    cursor: pointer;
+}
+
+.modal p button{
+    color: red;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    margin-left: 130px;
+    padding-top: 5px;
+    font-weight: 800;
+}
+
+.modal div input{
+    outline: none;
+    border: none;
+    height: 30px;
+    font-weight: 600;
+    text-align: center;
+    color: black;
+    border-radius: 15px;
+}
+
+.hidden{
+    display: none;
+}
