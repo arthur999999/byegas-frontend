@@ -1,4 +1,4 @@
-import Ranking from "@/components/Ranking";
+import Ranking from "@/components/Home/Ranking";
 import TopBar from "@/components/TopBar";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";

@@ -83,6 +83,19 @@
     margin-bottom: 10px ;
 }
 
+.favorite button {
+   background-color:rgb(56, 245, 65);
+   border-radius: 50%;
+   border: none;
+   width: 30px;
+   height: 30px;
+   font-size: 25px;
+   text-align: center;
+    color: white;
+    cursor: pointer;
+   font-weight: 900;
+}
+
 .favorite span{
     font-size: 30px;
     font-weight: 800;
@@ -182,6 +195,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.input span{
+    font-size: 20px;
+    color: white;
+}
+
+.alarmdesc {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.alarmdesc span {
+    font-size: 20px;
 }
 
 .hidden{

@@ -1,9 +1,12 @@
-import CardSpecific from "@/components/CardSpecific"
-import FavoriteCard from "@/components/FavoriteCard"
+import { getOneList } from "@/api/chains"
+import CardSpecific from "@/components/chain_id/CardSpecific"
+import CommentsCard from "@/components/chain_id/CommentsCard"
+import FavoriteCard from "@/components/chain_id/FavoriteCard"
 import TopBar from "@/components/TopBar"
+import { CallPopModal } from "@/utils/CallPopModal"
 import axios from "axios"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import style from "../../styles/Home.module.css"
 
 export default function Chain() {
@@ -54,35 +57,34 @@ export default function Chain() {
     const [secondTime, setSecondTime] = useState(true)
     const router = useRouter()
     
+    
+    
+   
+      
+    
 
     useEffect(()=> {
-        const id = router.query.id
-        const respose = axios.get(`${process.env.NEXT_PUBLIC_API_URL}/chains/listone/${id}`,{
-            timeout: 6000,
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-            },
-          } )
-         respose.then((data)=>{
-            console.log(data.data)
-            if(!data){
-                return
-            }
-            setData(data.data)
-         }).catch((error)=>{
-            console.log(error)
-         })
+      const id =(router.query.id)
+      const response =  getOneList(id).then((response)=>{
+        if(response.name != "AxiosError"){
+          setData(response)
+          console.log(response)
+        }
+      }).catch((error) =>{
+        console.log(error)
+      })
+      
          if(!secondTime){
             setTimeout(()=> {
                 setSecondTime(true)
-            }, 20000)
+            }, 5000)
          }else{
             setTimeout(()=> {
                 setSecondTime(false)
-            }, 20000)
+            }, 5000)
          }
          
-    }, [secondTime])
+    }, [secondTime, router])
     return(
         <>
             <div className={style.home}>
@@ -91,6 +93,7 @@ export default function Chain() {
                 <CardSpecific data={data}/>
                 <div>
                     <FavoriteCard data={data} />
+                    <CommentsCard data={data}/>
                 </div>
             </div>
           </div>

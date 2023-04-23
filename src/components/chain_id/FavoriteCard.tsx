@@ -1,4 +1,4 @@
-import style from "../styles/Chain.module.css"
+import style from "../../styles/Chain.module.css"
 import { FaRegStar, FaStar } from "react-icons/fa"
 import { useState } from "react"
 import { deleteFavorite, sendFavorite } from "@/api/favorite"
@@ -54,7 +54,10 @@ export default function FavoriteCard({data}: {
         <div className={style.favorite}>
             <h2>Favorite <span onClick={()=> favChain(data.id)}>{fav ? <FaStar/> : <FaRegStar/> }</span></h2>
             <div><span>Alarm price</span> <button onClick={()=> setModal(true)}>+</button>
-            <p>{data.alarm[0] ? data.alarm[0].valueGas : "No Alarms" }</p>
+            <div className={style.alarmdesc}>
+              <p>{data.alarm[0] ? data.alarm[0].valueGas : "No Alarms" }{data.alarm[0]? <span>{data.alarm[0]?.inGwei ? "GWEI" : "/10K USD"}</span> : ""}</p>
+            </div>
+            
             </div>
             < ModalAlarm modal={modal} setModal={setModal} id={data.alarm[0] ?  data.alarm[0].id : 0} chainId={data.id}/>
         </div>

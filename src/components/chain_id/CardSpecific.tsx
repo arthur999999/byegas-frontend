@@ -1,4 +1,4 @@
-import style from "../styles/Chain.module.css"
+import style from "../../styles/Chain.module.css"
 import TablePrice from "./TablePrice"
 
 export default function CardSpecific({data}: {

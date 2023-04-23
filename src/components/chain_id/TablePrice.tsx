@@ -1,4 +1,4 @@
-import style from "../styles/Chain.module.css"
+import style from "../../styles/Chain.module.css"
 
 export default function TablePrice({data}: {data: {
     Standart: {

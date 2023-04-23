@@ -1,6 +1,6 @@
 import { deleteFavorite, sendFavorite } from "@/api/favorite"
 import { Key, useState } from "react"
-import style from "../styles/Ranking.module.css"
+import style from "../../styles/Ranking.module.css"
 import { FaRegStar, FaStar } from "react-icons/fa"
 import { CallPopModal } from "@/utils/CallPopModal"
 import { useRouter } from "next/router"
