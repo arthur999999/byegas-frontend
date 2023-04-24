@@ -26,7 +26,7 @@ export default function TopBar() {
         <>
             <div className={style.topbar}>
                 
-                    <Link href={"/"}><p><FaGasPump className={style.icon}/> Byegas</p></Link>
+                    <Link href={"/home"}><p><FaGasPump className={style.icon}/> Byegas</p></Link>
                     <Link href={"/alarms"}><p><FaBell className={style.icon}/> Alarms</p></Link>
                     <p onClick={()=> setShow(true)} ><img  src={image} alt="" className={style.image}/> {name}</p>
 

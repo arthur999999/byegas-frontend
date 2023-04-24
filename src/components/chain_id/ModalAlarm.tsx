@@ -36,7 +36,6 @@ export default function ModalAlarm({modal, setModal, id, chainId}: {
         const result = await getTelegram()
         if(typeof result !== "string"){
             CallPopModal("error", {setClassName, setText})
-            console.log(result)
             return
         }
         setTelegram(result)

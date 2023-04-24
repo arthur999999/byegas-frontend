@@ -12,7 +12,6 @@ export default function AlarmsCards() {
         const result = await getAlarms()
         if(result[0]){
             setAlarms(result)
-            console.log(result)
         }
     }, [])
 

@@ -68,10 +68,10 @@ export default function Chain() {
       const response =  getOneList(id).then((response)=>{
         if(response.name != "AxiosError"){
           setData(response)
-          console.log(response)
+          
         }
       }).catch((error) =>{
-        console.log(error)
+        return
       })
       
          if(!secondTime){

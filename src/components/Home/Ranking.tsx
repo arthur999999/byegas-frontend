@@ -20,7 +20,6 @@ export default function Ranking() {
             if(response[0]){
                 setData(response)
             }
-            console.log(response)
        
         
         
