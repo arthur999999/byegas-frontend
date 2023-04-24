@@ -28,9 +28,19 @@ export default function CommentsCard({data}: {
     }) {
     const [modal, setModal] = useState(false)
     const [comments, setComments] = useState([])
+    const [secondTime, setSecondTime] = useState(true)
     useEffect(()=>{
         setComments(data.comments)
-    }, [modal])
+        if(!secondTime){
+            setTimeout(()=> {
+                setSecondTime(true)
+            }, 3000)
+         }else{
+            setTimeout(()=> {
+                setSecondTime(false)
+            }, 3000)
+         }
+    }, [secondTime])
     return(<>
         <div className={style.comment}>
             <div className={style.title}><h2>Comments</h2> <button onClick={()=> setModal(true)}>+</button></div>

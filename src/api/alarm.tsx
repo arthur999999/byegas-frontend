@@ -25,3 +25,16 @@ export async function getTelegram(){
         return error
     }
 }
+
+export async function getAlarms(){
+  try {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/alarms/list`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      } )
+    return response.data
+} catch (error) {
+    return error
+}
+}
