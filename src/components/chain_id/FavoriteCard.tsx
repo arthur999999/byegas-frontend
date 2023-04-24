@@ -1,6 +1,6 @@
 import style from "../../styles/Chain.module.css"
 import { FaRegStar, FaStar } from "react-icons/fa"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { deleteFavorite, sendFavorite } from "@/api/favorite"
 import ModalAlarm from "./ModalAlarm"
 import Link from "next/link"
@@ -29,8 +29,12 @@ export default function FavoriteCard({data}: {
         alarm: any
       } 
     }){
-    const [fav, setFav] = useState(data.favorite)
+    const [fav, setFav] = useState(false)
     const [modal, setModal] = useState(false)
+
+    useEffect(()=>{
+      setFav(data.favorite)
+    }, [data])
     
     async function favChain(id: number){
         if(!fav){

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import style from "../styles/TopBar.module.css"
 import { FaGasPump, FaBell, FaRegStar } from "react-icons/fa";
 import UserModal from "./UserModal";
+import Link from "next/link";
 
 export default function TopBar() {
 
@@ -25,9 +26,8 @@ export default function TopBar() {
         <>
             <div className={style.topbar}>
                 
-                    <p><FaGasPump className={style.icon}/> Byegas</p>
-                    <p><FaBell className={style.icon}/> Alarms</p>
-                    <p><FaRegStar className={style.icon}/>Favorites</p>
+                    <Link href={"/"}><p><FaGasPump className={style.icon}/> Byegas</p></Link>
+                    <Link href={"/alarms"}><p><FaBell className={style.icon}/> Alarms</p></Link>
                     <p onClick={()=> setShow(true)} ><img  src={image} alt="" className={style.image}/> {name}</p>
 
                 
